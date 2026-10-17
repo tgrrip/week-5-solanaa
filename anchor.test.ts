@@ -1,7 +1,5 @@
-// Создаем новый аккаунт для хранения данных счетчика
 const counterKp = pg.web3.Keypair.generate();
 
-// 1. Вызываем initialize
 const tx1 = await pg.program.methods
   .initialize()
   .accounts({
@@ -14,7 +12,6 @@ const tx1 = await pg.program.methods
 
 console.log("Инициализация прошла, tx:", tx1);
 
-// 2. Вызываем increment
 const tx2 = await pg.program.methods
   .increment()
   .accounts({
@@ -24,7 +21,6 @@ const tx2 = await pg.program.methods
 
 console.log("Инкремент выполнен, tx:", tx2);
 
-// 3. Считываем данные
 const counterAccount = await pg.program.account.counterData.fetch(
   counterKp.publicKey
 );
